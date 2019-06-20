@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'Examen.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'jmffhroq',
+        'USER': 'jmffhroq',
+        'PASSWORD': 'E2XnS25-R67vev4y8zFzQKE5IDGG1SBm',
+        'HOST': 'raja.db.elephantsql.com',
+        'PORT': '5432',
     }
 }
 
@@ -119,3 +123,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
