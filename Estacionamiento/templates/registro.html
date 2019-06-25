@@ -23,90 +23,101 @@
                 Registrarse como dueño
               </button>
               
-              <!-- Modal -->
-              <div class="modal fade" id="dueños" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="dueños" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
+                <form action="crearD" method="POST">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Registro de dueño de estacionamiento</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">Registro de dueños </h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-                                <form>
-                                        <div class="form-group">
-                                                <label for="exampleFormControlInput1">Rut</label>
-                                                <input type="number" class="form-control"  placeholder="Ingrese rut sin puntos ni guiones">
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="exampleFormControlInput1">Correo</label>
-                                                <input type="email" class="form-control"  placeholder="ejemplo@ejemplo.com">
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="exampleFormControlInput1">Nombre completo</label>
-                                                <input type="text" class="form-control"  placeholder="Ingrese nombre completo">
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="exampleFormControlInput1">Telefono de contacto</label>
-                                                <input type="number" class="form-control"  placeholder="Ingrese numero telefonico">
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="exampleFormControlInput1">Contraseña</label>
-                                                <input type="password" class="form-control"  placeholder="Ingrese contraseña">
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="exampleFormControlInput1">Direccion</label>
-                                                <input type="number" class="form-control"  placeholder="Ingrese direccion">
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Tipo de cuenta bancaria</label>
-                                        <select class="form-control" >
-                                                <option>Debito</option>
-                                                <option>Credito</option>
-                                        </select>
-                                        
-                                        <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Seleccione casa o edificio</label>
-                                        <select class="form-control" id="vivienda">
-                                                <option>Casa</option>
-                                                <option>Edificio</option> 
-                                        </select>
-                                        <div>
-                                                
-                                         <div class="form-group" id="piso" >
+                              
+                                                {% csrf_token %}
+                                                <div class="form-group">
+                                                        <label for="exampleFormControlInput1">Rut</label>
+                                                        <input type="number" class="form-control" name="rut" placeholder="Ingrese rut sin puntos ni guiones">
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="exampleFormControlInput1">Correo</label>
+                                                        <input type="email" class="form-control" name="email"  placeholder="ejemplo@ejemplo.com">
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="exampleFormControlInput1">Nombre completo</label>
+                                                        <input type="text" class="form-control" name="nombre" placeholder="Ingrese nombre completo">
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="exampleFormControlInput1">Telefono de contacto</label>
+                                                        <input type="number" class="form-control" name="telefono" placeholder="Ingrese numero telefonico">
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="exampleFormControlInput1">Contraseña</label>
+                                                        <input type="password" class="form-control" name="contrasenia"  placeholder="Ingrese contraseña">
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="exampleFormControlInput1">Direccion</label>
+                                                        <input type="number" class="form-control" name="direccion"  placeholder="Ingrese direccion">
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">Tipo de cuenta bancaria</label>
+                                                        <select name="cuenta" class="form-control" >
+                                                                <option value="debito">Debito</option>
+                                                                <option value="credito">Credito</option>
+                                                        </select>  
+                                                </div>     
+                                                <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">Seleccione casa o edificio</label>
+                                                        <select name="edificio" class="form-control" id="vivienda">
+                                                                <option value="casa" >Casa</option>
+                                                                <option value="edificio">Edificio</option> 
+                                                        </select>
+                                                </div>
+                                                <div class="form-group" id="piso" >
                                                         <label for="exampleFormControlInput1">Piso</label>
-                                                        <input type="text" class="form-control"  placeholder="Ingrese piso de estacionamiento">
-                                        </div>
-                                        <div class="form-group" id="numeroE">
+                                                        <input type="text" name="piso" class="form-control"  placeholder="Ingrese piso de estacionamiento">
+                                                </div>
+                                                <div class="form-group" id="numeroE">
                                                         <label for="exampleFormControlInput1">Numero de estacionamiento</label>
-                                                        <input type="number" class="form-control"  placeholder="Ingrese numero de estacionamiento">
-                                        </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                </form>
+                                                        <input type="number" name="numero" class="form-control"  placeholder="Ingrese numero de estacionamiento">
+                                                </div>
+                                       
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Registrar</button>
+                      <button type="submit" class="btn btn-primary">Registrar</button>
                     </div>
+                </form>
                   </div>
                 </div>
               </div>
-              </div>
+              </div>        
+
+
+
+
+
+
+
               <div class="col-md-4" align = center>
                         <h3>Clientes</h3>
                         <p>Si andas en busca de estacionamientos registrate aca y encontraras estacionamientos cercanos disponibles y de forma rapida </p>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#clientes">
-                        Registrarse como dueño
-                      </button>
+                                Registrarse como Arrendatario
+                        </button>
                       
                       <!-- Modal -->
                       <div class="modal fade" id="clientes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
+                        <form action="crearA" method="POST">
+                                {% csrf_token %}
                             <div class="modal-header">
                               <h5 class="modal-title" id="exampleModalLabel">Registro de clientes</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -114,47 +125,49 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                                        <form>
+                                       
                                                 <div class="form-group">
                                                         <label for="exampleFormControlInput1">Rut</label>
-                                                        <input type="number" class="form-control"  placeholder="Ingrese rut sin puntos ni guiones">
+                                                        <input type="number" name="rut" class="form-control"  placeholder="Ingrese rut sin puntos ni guiones">
                                                 </div>
                                                 <div class="form-group">
                                                         <label for="exampleFormControlInput1">Correo</label>
-                                                        <input type="email" class="form-control"  placeholder="ejemplo@ejemplo.com">
+                                                        <input type="email" name="email" class="form-control"  placeholder="ejemplo@ejemplo.com">
                                                 </div>
                                                 <div class="form-group">
                                                         <label for="exampleFormControlInput1">Nombre completo</label>
-                                                        <input type="text" class="form-control"  placeholder="Ingrese nombre completo">
+                                                        <input type="text" name="nombre" class="form-control"  placeholder="Ingrese nombre completo">
                                                 </div>
                                                 <div class="form-group">
                                                         <label for="exampleFormControlInput1">Tarjeta</label>
-                                                        <select class="form-control" >
-                                                        <option>Debito</option>
-                                                        <option>Credito</option>
+                                                        <select name="tarjeta" class="form-control" >
+                                                        <option value="debito">Debito</option>
+                                                        <option value="credito">Credito</option>
                                                         </select>
                                                 </div>
                                                 <div class="form-group">
                                                         <label for="exampleFormControlInput1">Banco</label>
-                                                        <input type="password" class="form-control"  placeholder="Ingrese contraseña">
+                                                        <input type="text" name="banco" class="form-control"  placeholder="Ingrese banco">
                                                 </div>
                                                 <div class="form-group">
                                                         <label for="exampleFormControlInput1">Telefono</label>
-                                                        <input type="number" class="form-control"  placeholder="Ingrese direccion">
+                                                        <input type="number" name="telefono" class="form-control"  placeholder="Ingrese telefono">
+
                                                 </div>
                                                 <div>
                                                         
-                                                 <div class="form-group" id="piso" >
+                                                 <div class="form-group">
                                                         <label for="exampleFormControlInput1">Contraseña</label>
-                                                        <input type="password" class="form-control"  placeholder="Ingrese contraseña">
+                                                        <input type="password" name="contrasenia" class="form-control"  placeholder="Ingrese contraseña">
                                                 </div>
                                                 </div>
-                                        </form>
+                                       
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                              <button type="button" class="btn btn-primary">Registrar</button>
+                              <button type="submit" class="btn btn-primary">Registrar</button>
                             </div>
+                        </form>
                           </div>
                         </div>
                       </div>

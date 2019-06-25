@@ -26,11 +26,65 @@
           <a class="nav-link" href="{% url 'registro' %}">Registro</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="{% url 'administrador' %}">administrador</a>
         </li>
       </ul>
     </div>
+    <div class="navbar-collapse ml-auto">
+
+      <ul class="navbar-nav">
+        {% if user.is_authenticated %}
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'Usuarios:logout' %}">Cerrar sesion</a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+            <a class="nav-link" data-toggle="modal" data-target="#Login" href="#Login">Iniciar sesion</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" data-toggle="modal" data-target="#Login" href="#Login">Registrate</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
   </nav>
+
+
+
+
+  
+  
+  <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form action="{% url 'Usuarios:iniciar' %}" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><h1>Inicion sesion</h1></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            
+                {% csrf_token %}
+                  <div class="form-group">
+                    <h3>Correo:</h3>
+                    <input class="form-control" type="email" name="correo" id="correo" placeholder="Ingrese su correo">
+                  </div>
+                  <div class="form-group">
+                    <h3>Contraseña:</h3>
+                    <input class="form-control" type="password" name="contra" id="contra" placeholder="Ingrese contraseña" >
+                  </div>
+               
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" href="{% url 'registro' %}">Registrate</button>
+          <button class="btn btn-primary" type="submit">Ingresar</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">    
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <h1>LISTA DUEÑOS</h1>
+    {% if dueno %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>RUT</td>
+                <td>EMAIL</td>
+                <td>NOMBRE</td>
+                <td>TELEFONO</td>
+                <td>DIRECCION</td>
+                <td>CUENTA BANCARIA</td>
+                <td>TIPO VIVIENDA</td>
+                <td>Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for du in dueno %}
+            <tr>
+                <td>{{du.rut}}</td>
+                <td>{{du.email}}</td>
+                <td>{{du.nombre}}</td>
+                <td>{{du.telefono}}</td>
+                <td>{{du.direccion}}</td>
+                <td>{{du.cuentaB}}</td>
+                <td>{{du.edificio}}</td>
+                <td>
+                        <button>asd</button>
+                        <button>asd</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h3>NO HAY REGISTROS</h3>
+    {% endif %}
+
+    <h1>LISTA ARRENDATARIOS</h1>
+    {% if arren %}
+    <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>RUT</td>
+                    <td>EMAIL</td>
+                    <td>NOMBRE</td>
+                    <td>TELEFONO</td>
+                    <td>BANCO</td>
+                    <td>TARJETA</td>                    
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for du in arren %}
+                <tr>
+                    <td>{{du.rut}}</td>
+                    <td>{{du.email}}</td>
+                    <td>{{du.nombre}}</td>
+                    <td>{{du.telefono}}</td>
+                    <td>{{du.banco}}</td>
+                    <td>{{du.tarjeta}}</td>
+                    <td>
+                            <button>asd</button>
+                            <button>asd</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+    <h3>NO HAY REGISTROS</h3>
+    {% endif %}
+
+    <h1>LISTA VEHICULOS</h1>
+    {% if vehiculo %}
+    <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>RUTUSUARIO</td>
+                    <td>PATENTE</td>
+                    <td>MARCA</td>
+                    <td>MODELO</td>   
+                    <td>ANIO</td>          
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for du in arren %}
+                <tr>
+                    <td>{{du.rutUsuario}}</td>
+                    <td>{{du.patente}}</td>
+                    <td>{{du.marca}}</td>
+                    <td>{{du.modelo}}</td>
+                    <td>{{du.anio}}</td>
+                    <td>
+                            <button>asd</button>
+                            <button>asd</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+    <h3>NO HAY REGISTROS</h3>
+    {% endif %}
+
+
+    <h1>LISTA USUARIOS</h1>
+    {% if usuarios %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>RUT</td>
+                    <td>EMAIL</td>
+                    <td>TIPO</td>     
+                    <td>PASS</td>         
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for du in usuarios %}
+                <tr>
+                    <td>{{du.rut}}</td>
+                    <td>{{du.email}}</td>
+                    <td>{{du.tipo}}</td>
+                    <td>{{du.password}}</td>
+                    <td>
+                            <button>asd</button>
+                            <button>asd</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+
+    {% endif %}
+    {% include 'footer.html' %}
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>   
+    <script src="{% static 'js/j.query.validate.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+
+</html>
