@@ -9,8 +9,9 @@ class DuenoE (models.Model):
     direccion = models.CharField(max_length = 100, default= "Holas123")
     cuentaB = models.CharField(max_length = 20,default= "Credito")
     edificio = models.CharField(max_length = 20, default ="1 32 A")
-    piso = models.IntegerField() 
+    piso = models.IntegerField()
     numero =  models.IntegerField()
+    activo = models.BooleanField(default = False)
 
 
 class Arrendatario (models.Model):
@@ -27,3 +28,18 @@ class Vehiculo (models.Model):
     marca = models.CharField(max_length=20)
     modelo = models.CharField(max_length= 20 )
     anio = models.IntegerField()
+
+class EstacionamientoActivo(models.Model):
+    rutDueno = models.CharField(max_length = 20)
+    direccion = models.CharField(max_length = 20)
+    tipo = models.CharField(max_length = 20)
+    piso = models.IntegerField()
+    numero = models.IntegerField()
+    precioHora = models.IntegerField()
+
+class Boleta(models.Model):
+    patenteVe = models.CharField(max_length= 10)
+    codEstacionamieno = models.IntegerField()
+    HoraIni = models.IntegerField()
+    HoraFin =  models.IntegerField()
+    valor =  models.IntegerField()

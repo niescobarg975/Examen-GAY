@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import DuenoE, Arrendatario, Vehiculo
+from .models import DuenoE, Arrendatario, Vehiculo, EstacionamientoActivo
 from Usuarios.models import User
 
 
@@ -11,10 +11,15 @@ def registro(request):
     return render(request,'registro.html')
 
 def perfil(request):
-    return render(request,'perfil.html')
+    duenos = DuenoE.objects.all()
+    arren = Arrendatario.objects.all()
+    vehiculos = Vehiculo.objects.all()
+    usuarios = User.objects.all()
+    contexto = {'duenos':duenos, 'arren':arren, 'vehiculos':vehiculos, 'usuarios':usuarios}
+    return render(request,'perfil.html', contexto)
 
 def disponibilidad(request):
-    return render(request,'disponibilidad.html')    
+    return render(request,'disponibilidad.html')
 
 def administrador(request):
     dueno = DuenoE.objects.all()
@@ -24,6 +29,8 @@ def administrador(request):
     contexto = {'dueno':dueno, 'arren':arren, 'vehiculo':vehiculo, 'usuarios':usuarios}
     return render(request, 'administrador.html', contexto)
 
+#CRUDS DE LAS DIFERENTES CLASES
+#DUEÑO
 def crearD(request):
     rut = request.POST.get('rut')
     email = request.POST.get('email')
@@ -46,7 +53,7 @@ def crearD(request):
     dueno.save()
     return render(request, 'index.html')
 
-
+#ARRENDATARIO
 def crearA(request):
     rut = request.POST.get('rut')
     email = request.POST.get('email')
@@ -64,6 +71,8 @@ def crearA(request):
     usu.save()
     return render(request,'index.html')
 
+
+#VEHICULO
 def crearV (request):
     rutUsuario = request.POST.get('rutU')
     patente = request.POST.get('patente')
@@ -73,5 +82,36 @@ def crearV (request):
 
     veh = Vehiculo(rutUsuario=rutUsuario, patente=patente, marca=marca, modelo = modelo, anio=anio)
     veh.save()
-    return render(request, 'index.html')
+    return render(request, 'perfil.html')
+
+def eliminarV(request, id):
+    auto = Vehiculo.objects.get(pk=id)
+    auto.delete()
+    return render(request, 'perfil.html')
+
+
+#ESTACIONAMIENTO
+def activarEstacionamiento(request):
+    rutDueno = request.POST.get('rut')
+    direccion = request.POST.get('direc')
+    tipo = request.POST.get('tipo')
+    piso = request.POST.get('piso')
+    numero = request.POST.get('num')
+    precio = request.POST.get('precio')   
+    est = EstacionamientoActivo(rutDueno=rutDueno, direccion=direccion, tipo=tipo, piso=piso, numero=numero, precioHora=precio)
+    est.save()
+    dueno = DuenoE.objects.get(rut=rutDueno)
+    dueno.activo = True
+    dueno.save()
+    return render(request, 'perfil.html')
+
+def desactivarEstacionamiento(request, rut):
+    esta = EstacionamientoActivo.objects.get(rutDueno=rut)
+    esta.delete()
+    dueno = DuenoE.objects.get(rut=rutDueno)
+    dueno.activo = False
+    dueno.save()
+    return render(request, 'perfil.html')
+
+
 

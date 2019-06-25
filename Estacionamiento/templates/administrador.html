@@ -13,7 +13,7 @@
 <body>
     {% include 'navbar.html' %}
     <h1>LISTA DUEÑOS</h1>
-    {% if dueno %}
+    {% if duenos %}
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -28,7 +28,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for du in dueno %}
+            {% for du in duenos %}
             <tr>
                 <td>{{du.rut}}</td>
                 <td>{{du.email}}</td>
@@ -146,7 +146,7 @@
             </tbody>
         </table>
     {% else %}
-
+        <h3>NO HAY REGISTROS</h3>
     {% endif %}
     {% include 'footer.html' %}
     

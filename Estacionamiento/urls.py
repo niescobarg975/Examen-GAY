@@ -13,8 +13,15 @@ urlpatterns = [
 
 
     #Metodos
+    #dueño
     path('registro/crearD', views.crearD, name="crearD"),
+    path('perfil/activar', views.activarEstacionamiento, name="activar"),
+    path('perfil/desactivar/<int:rut>', views.desactivarEstacionamiento, name="desactivar"),
+    #arrendador
     path('registro/crearA', views.crearA, name="crearA"),
+    path('perfil/agregarV', views.crearV, name="agregarV"),
+    path('perfil/eliminarV/<int:id>',views.eliminarV, name="eliminarV"),
+
 
   
 
