@@ -53,6 +53,31 @@ def crearD(request):
     dueno.save()
     return render(request, 'index.html')
 
+def editarD(request, id):
+    d = DuenoE.objects.get(pk=id)
+    email = request.POST.get('email')
+    telefono = request.POST.get('telefono')
+    contrasenia = request.POST.get('contrasenia')
+    direccion = request.POST.get('direccion')
+    edificio = request.POST.get('edificio')
+    piso = request.POST.get('piso')
+    numero = request.POST.get('numero')
+    d.email = email
+    d.telefono = telefono
+    d.contrasenia = contrasenia
+    d.direccion = direccion
+    d.edificio = edificio
+    d.piso = piso
+    d.numero = numero
+    d.save()
+    return redirect('perfil.html')
+
+
+def eliminarD(request, id):
+    duenio = DuenoE.objects.get(pk=id)
+    duenio.delete()
+    return render (request,'index.html')
+
 #ARRENDATARIO
 def crearA(request):
     rut = request.POST.get('rut')
@@ -69,6 +94,23 @@ def crearA(request):
     us = User.objects.create_user(email = email, rut = rut, password = contrasenia, tipo = 'arr')
     us.save()
     usu.save()
+    return render(request,'index.html')
+
+def editarA(request,id):
+    a = Arrendatario.objects.get(pk=id)
+    email = request.POST.get('email')
+    telefono = request.POST.get('telefono')
+    contrasenia = request.POST.get('contrasenia')
+    a.email = email
+    a.telefono = telefono
+    a.contrasenia = contrasenia
+    a.save()
+    return redirect('perfil.html')
+
+
+def eliminarA(request, id):
+    arr = Arrendatario.objects.get(pk=id)
+    arr.delete()
     return render(request,'index.html')
 
 
