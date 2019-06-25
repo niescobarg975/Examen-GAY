@@ -10,8 +10,11 @@ def index(request):
 def registro(request):
     return render(request,'registro.html')
 
-def nav(request):
-    return render(request,'navbar.html')
+def perfil(request):
+    return render(request,'perfil.html')
+
+def disponibilidad(request):
+    return render(request,'disponibilidad.html')    
 
 def administrador(request):
     dueno = DuenoE.objects.all()
