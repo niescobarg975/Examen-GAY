@@ -15,18 +15,20 @@ def perfil(request):
     arren = Arrendatario.objects.all()
     vehiculos = Vehiculo.objects.all()
     usuarios = User.objects.all()
-    contexto = {'duenos':duenos, 'arren':arren, 'vehiculos':vehiculos, 'usuarios':usuarios}
+    estacionamientos = EstacionamientoActivo.objects.all()
+    contexto = {'duenos':duenos, 'arren':arren, 'vehiculos':vehiculos, 'usuarios':usuarios, 'estacionamientos':estacionamientos}
     return render(request,'perfil.html', contexto)
 
 def disponibilidad(request):
     return render(request,'disponibilidad.html')
 
 def administrador(request):
-    dueno = DuenoE.objects.all()
+    duenos = DuenoE.objects.all()
     arren = Arrendatario.objects.all()
     vehiculo = Vehiculo.objects.all()
     usuarios = User.objects.all()
-    contexto = {'dueno':dueno, 'arren':arren, 'vehiculo':vehiculo, 'usuarios':usuarios}
+    estacionamientos = EstacionamientoActivo.objects.all()
+    contexto = {'duenos':duenos, 'arren':arren, 'vehiculo':vehiculo, 'usuarios':usuarios, 'estacionamientos':estacionamientos}
     return render(request, 'administrador.html', contexto)
 
 #CRUDS DE LAS DIFERENTES CLASES
@@ -105,13 +107,13 @@ def editarA(request,id):
     a.telefono = telefono
     a.contrasenia = contrasenia
     a.save()
-    return redirect('perfil.html')
+    return redirect('administrador.html')
 
 
 def eliminarA(request, id):
     arr = Arrendatario.objects.get(pk=id)
     arr.delete()
-    return render(request,'index.html')
+    return render(request,'administrador.html')
 
 
 #VEHICULO
@@ -129,7 +131,7 @@ def crearV (request):
 def eliminarV(request, id):
     auto = Vehiculo.objects.get(pk=id)
     auto.delete()
-    return render(request, 'perfil.html')
+    return render(request, 'administrador.html')
 
 
 #ESTACIONAMIENTO
@@ -139,7 +141,7 @@ def activarEstacionamiento(request):
     tipo = request.POST.get('tipo')
     piso = request.POST.get('piso')
     numero = request.POST.get('num')
-    precio = request.POST.get('precio')   
+    precio = request.POST.get('precio')  
     est = EstacionamientoActivo(rutDueno=rutDueno, direccion=direccion, tipo=tipo, piso=piso, numero=numero, precioHora=precio)
     est.save()
     dueno = DuenoE.objects.get(rut=rutDueno)
@@ -150,10 +152,19 @@ def activarEstacionamiento(request):
 def desactivarEstacionamiento(request, rut):
     esta = EstacionamientoActivo.objects.get(rutDueno=rut)
     esta.delete()
-    dueno = DuenoE.objects.get(rut=rutDueno)
+    dueno = DuenoE.objects.get(rut=rut)
     dueno.activo = False
     dueno.save()
     return render(request, 'perfil.html')
+
+#Usuarios
+def eliminarU(request,id):
+    us = User.objects.get(id=id)
+    us.delete()
+    return render(request, 'administrador.html')
+
+#Boleta
+
 
 
 

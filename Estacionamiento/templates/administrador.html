@@ -38,10 +38,34 @@
                 <td>{{du.cuentaB}}</td>
                 <td>{{du.edificio}}</td>
                 <td>
-                        <button>asd</button>
+                        <a class="btn btn-danger" data-toggle="modal" data-target="#eliminarA{{ar.id}}" href="#eliminarD{{ar.id}}">Eliminar</a>
                         <button>asd</button>
                 </td>
             </tr>
+
+            <div class="modal fade" id="eliminarD{{du.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                    <form action="eliminarD/{{du.id}}">
+                                            <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                            </div>
+                                            <div class="modal-body">                                                                       
+                                                                    
+                                                
+                                    
+                                            </div>
+                                            <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-danger">Save changes</button>
+                                            </div>
+                                    </form>
+                            </div>
+                    </div>
+            </div>
             {% endfor %}
         </tbody>
     </table>
@@ -64,19 +88,43 @@
                 </tr>
             </thead>
             <tbody>
-                {% for du in arren %}
+                {% for ar in arren %}
                 <tr>
-                    <td>{{du.rut}}</td>
-                    <td>{{du.email}}</td>
-                    <td>{{du.nombre}}</td>
-                    <td>{{du.telefono}}</td>
-                    <td>{{du.banco}}</td>
-                    <td>{{du.tarjeta}}</td>
+                    <td>{{ar.rut}}</td>
+                    <td>{{ar.email}}</td>
+                    <td>{{ar.nombre}}</td>
+                    <td>{{ar.telefono}}</td>
+                    <td>{{ar.banco}}</td>
+                    <td>{{ar.tarjeta}}</td>
                     <td>
-                            <button>asd</button>
+                            <a class="btn btn-danger" data-toggle="modal" data-target="#eliminarA{{ar.id}}" href="#eliminarA{{ar.id}}">Eliminar</a>
                             <button>asd</button>
                     </td>
                 </tr>
+                <div class="modal fade" id="eliminarA{{ar.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                        <form action="eliminarA/{{ar.id}}" method="POST">
+                                            {% csrf_token %}
+                                                <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                </div>
+                                                <div class="modal-body">                                                                       
+                                                                        
+                                                    <h2>¿Esta seguro de eliminar este usuario?</h2>
+                                        
+                                                </div>
+                                                <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger"> Eliminar</button>
+                                                </div>
+                                        </form>
+                                </div>
+                        </div>
+                </div>
                 {% endfor %}
             </tbody>
         </table>
@@ -98,18 +146,47 @@
                 </tr>
             </thead>
             <tbody>
-                {% for du in arren %}
+                {% for ve in vehiculo %}
                 <tr>
-                    <td>{{du.rutUsuario}}</td>
-                    <td>{{du.patente}}</td>
-                    <td>{{du.marca}}</td>
-                    <td>{{du.modelo}}</td>
-                    <td>{{du.anio}}</td>
+                    <td>{{ve.rutUsuario}}</td>
+                    <td>{{ve.patente}}</td>
+                    <td>{{ve.marca}}</td>
+                    <td>{{ve.modelo}}</td>
+                    <td>{{ve.anio}}</td>
                     <td>
-                            <button>asd</button>
+                            <a class="btn btn-danger" data-toggle="modal" data-target="#eliminarV{{ve.id}}" href="#eliminarV{{ve.id}}">Eliminar</a>
                             <button>asd</button>
                     </td>
                 </tr>
+
+                <div class="modal fade" id="eliminarV{{ve.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                        <form action="eliminarV/{{ve.id}}" method="POST">
+                                            {% csrf_token %}
+                                                <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Eliminar Vehiculo</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                                    <h2>¿Esta seguro de eliminar su vehiculo?</h2>
+                                                                        
+                                        
+                                        
+                                                </div>
+                                                <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                </div>
+                                        </form>
+                                </div>
+                        </div>
+                </div>
+
+
+
                 {% endfor %}
             </tbody>
         </table>
@@ -138,16 +215,74 @@
                     <td>{{du.tipo}}</td>
                     <td>{{du.password}}</td>
                     <td>
-                            <button>asd</button>
+                            <a class="btn btn-danger" data-toggle="modal" data-target="#eliminarU{{du.id}}" href="#eliminarU{{du.id}}">Eliminar</a>
                             <button>asd</button>
                     </td>
                 </tr>
+
+                <div class="modal fade" id="eliminarU{{du.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                        <form action="eliminarU/{{du.id}}" method="POST">
+                                            {% csrf_token %}
+                                                <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Eliminar Usuarios</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h2>¿Esta seguro de eliminar este usuario?</h2>
+                                                </div>
+                                                <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                </div>
+                                        </form>
+                                </div>
+                        </div>
+                </div>
                 {% endfor %}
             </tbody>
         </table>
     {% else %}
         <h3>NO HAY REGISTROS</h3>
     {% endif %}
+    <h1>LISTA ESTACIONAMIENTOS ACTIVOS</h1>
+    {% if estacionamientos %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>RUTDUENO</td>
+                <td>DIRECCION</td>
+                <td>TIPO</td>
+                <td>PISO</td>
+                <td>NUMERO</td>
+                <td>PRECIO</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for es in estacionamientos %}
+            <tr>
+                <td>{{es.rutDueno}}</td>
+                <td>{{es.direccion}}</td>
+                <td>{{es.tipo}}</td>
+                <td>{{es.piso}}</td>
+                <td>{{es.numero}}</td>
+                <td>{{es.precioHora}}</td>
+
+            </tr>
+
+
+            
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h3>NO HAY REGISTROS</h3>
+    {% endif %}
+
+
     {% include 'footer.html' %}
     
 

@@ -13,6 +13,10 @@ urlpatterns = [
 
 
     #Metodos
+    #pagina administrador
+    path('eliminarD/<int:id>', views.eliminarD, name="eliminarD"),
+    path('eliminarA/<int:id>', views.eliminarA, name="eliminarA"),
+    path('eliminarV/<int:id>', views.eliminarV, name="eliminarV"),
     #dueño
     path('registro/crearD', views.crearD, name="crearD"),
     path('perfil/activar', views.activarEstacionamiento, name="activar"),
@@ -21,6 +25,9 @@ urlpatterns = [
     path('registro/crearA', views.crearA, name="crearA"),
     path('perfil/agregarV', views.crearV, name="agregarV"),
     path('perfil/eliminarV/<int:id>',views.eliminarV, name="eliminarV"),
+    #Usuario
+    path('eliminarU/<int:id>', views.eliminarU, name="eliminarU"),
+
 
 
   
