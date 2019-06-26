@@ -14,6 +14,8 @@
 <body>
     {% include './navbar.html' %}
     <h1 align = center>Bienvenidos a Mi Estacionamiento</h1>
+    <center><img src="{% static 'img/Estacionamiento.jpg' %}" class="img-fluid" width="100%" alt=""></center>
+    <br>
     <!-- Button trigger modal -->
     <center>    
         <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#Mapa">
@@ -34,7 +36,6 @@
             </div>
             <div class="modal-body">
               <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d833.0724443625796!2d-70.678204!3d-33.3635!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d-33.3632677!2d-70.67800629999999!5e0!3m2!1ses-419!2scl!4v1561425812555!5m2!1ses-419!2scl" width="450" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>            
-
               </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -46,6 +47,7 @@
 
       <div class="row" style="margin-top: 60px;">
             <div class="col-md-6" style="text-align:center; margin-left: 40px; margin-right: 20px;">
+              <img src="{% static 'img/EstacionamientoCasa.jpg' %}" width="500" height="400" alt="">
               <h2>¿ Que es Mi estacionamiento ?</h2>
               <p style="font-size: large;">
       
@@ -54,6 +56,7 @@
               </p>
             </div>
             <div class="col-md-5"  style="text-align:center; margin-left: 20px; margin-right: 40px;" >
+              <img src="{% static 'img/Ubicacion.jpg' %}" width="400" height="300" alt="">
               <h2>¿ Como funciona Mi estacionamiento ?</h2>
               <p style="font-size: large;">
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -63,6 +66,7 @@
           </div>
             <div class="row" style="margin-top: 60px;" >
                     <div class="col-md-6" style="text-align:center; margin-left: 40px; margin-right: 20px;">
+                      <img src="{% static 'img/objetivos.jpg' %}" width="600" height="200" alt="">
                         <h2>Objetivos de Mi estacionamiento</h2>
                         <p style="font-size: large;">          
                   
